@@ -7,34 +7,40 @@ public class EmployeeWage {
     public static final int NUM_OF_WORKING_DAYS = 20;
     public static final int MAXIMUM_HRS_IN_MONTH = 100;
 
+    public static void computeEmployeeWage() {
+        int totalEmpHrs = 0, totalEmpWage = 0, totalWorkingDays = 0;
 
-    public static void main(String[] args) {
-        int employeeHrs = 0;
-        int totalempHrs=0;
-        int totalWorkingDays=0;
-        int totalemployeeWage=0;
-        int  empilyeeWage=0;
+        while (totalEmpHrs <= MAXIMUM_HRS_IN_MONTH && totalWorkingDays <= NUM_OF_WORKING_DAYS) {
 
-        while(totalempHrs <= MAXIMUM_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS){
+            int empHrs = 0;
             totalWorkingDays++;
+
             int empCheck = (int) Math.floor(Math.random() * 10) % 3;
+
             switch (empCheck) {
+
                 case FULL_TIME_WORK:
-                    employeeHrs = 8;
+                    empHrs = 8;
                     break;
+
                 case PART_TIME_WORK:
-                    employeeHrs = 4;
+                    empHrs = 4;
                     break;
+
                 default:
-                    employeeHrs = 0;
+                    empHrs = 0;
             }
 
-            totalempHrs +=employeeHrs;
-            empilyeeWage = employeeHrs * RATE_PER_HOUR;
-            totalemployeeWage += empilyeeWage;
-            System.out.println("Day: " +totalWorkingDays+ " Employee Hour :" + employeeHrs);
+            totalEmpHrs += empHrs;
+            System.out.println("Working hours : " + empHrs);
+            int empWage = empHrs * RATE_PER_HOUR;
+            totalEmpWage += empWage;
+            System.out.println("Employee Wage : " + empWage);
         }
-        System.out.println("Total Emp Wage :"+totalemployeeWage);
+        System.out.println("Total working hours : " + totalEmpHrs);
+        System.out.println("Total employee wage : " + totalEmpWage);
     }
-
+    public static void main(String[] args) {
+        computeEmployeeWage();
+    }
 }
